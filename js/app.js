@@ -47,6 +47,8 @@ function getHumanChoice() {
     return choice.toLowerCase();
 }
 
+// Global variables to keep track of the scores
+
 let computerScore = 0;
 let humanScore = 0;
 
@@ -78,7 +80,41 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+/*  playGame() will play 5 rounds, keeping track of the scores so it can
+        determine the winner at the end of the game
+    
+    Pseudocode:
+    - Clear the console when the game starts
+    - Repeat the next steps 5 times:
+        - Get the human choice
+        - Get the computer choice
+        - Play a round with these choices
+    - Once the 5 rounds have been played, compare the scores:
+        - If user's score is bigger, they win
+        - If computer score is bigger, it wins
+        - If the scores are the same, its a draw and nobody won
+*/
 
-playRound(humanSelection, computerSelection);
+function playGame() {
+    console.clear();
+
+    let humanSelection;
+    let computerSelection;
+
+    for(let i = 0; i < 5; i++){
+        humanSelection = getHumanChoice();
+        computerSelection = getComputerChoice();
+        
+        playRound(humanSelection, computerSelection);
+    }
+
+    console.log(`Your score: ${humanScore}`);
+    console.log(`Computer's score: ${computerScore}`);
+    if (humanScore > computerScore){
+        console.log('Congratulations! You won!');
+    } else if (computerScore > humanScore){
+        console.log('Oh! You lost!');
+    } else {
+        console.log('You both got the same score! It\'s a draw!');
+    }
+}
