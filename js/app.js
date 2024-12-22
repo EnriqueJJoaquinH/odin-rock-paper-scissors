@@ -1,14 +1,27 @@
+// ? Global Variables to keep track of the scores
+let computerScore = 0;
+let humanScore = 0;
+let roundGame = 0;
+
+// ? DOM Global Variables
+// Text headers
+let roundTxt = document.querySelector('h1');
+let winnerTxt = document.querySelector('h3');
+// Player's information
+let humanScoreTxt = document.querySelector('#human-score');
+let computerScoreTxt = document.querySelector('#computer-score');
+let humanChoiceImg = document.querySelectorAll('.choice')[0];
+let computerChoiceImg = document.querySelectorAll('.choice')[1];
+let computerChoiceTxt = document.querySelector('.button');
+// Buttons
+let btnPanel = document.querySelector('.buttons');
+let rockBtn = document.querySelector('#rock');
+let paperBtn = document.querySelector('#paper');
+let scissorsBtn = document.querySelector('#scissors');
+let playAgainBtn = document.querySelector('#again')
+
 /*  getComputerChoice() will return randomly one of the following strings:
-        "rock", "paper", or "scissors"
-        
-        Pseudocode:
-    - Create a random number
-    - Multiply that number three times
-    - Round the number down
-    - Depending on the number value, assign the result a different string
-    - Return that string
-*/
-   
+        "rock", "paper", or "scissors" */
 function getComputerChoice() {
     let randNum = Math.ceil(3 * Math.random());
     
@@ -31,14 +44,7 @@ function getComputerChoice() {
 }
 
 /*  getHumanChoice() asks the user to enter one of the valid options:
-        "rock", "paper", or "scissors"
-
-    Pseudocode:
-    - Show a message in the console, so the user knows what to type
-    - Retrieve the user's answer and save it into a variable
-    - Return that variable
-*/
-
+        "rock", "paper", or "scissors" */
 function getHumanChoice() {
     let choice = prompt('Type your choice (rock, paper, or scissors): ');
 
@@ -47,23 +53,8 @@ function getHumanChoice() {
     return choice.toLowerCase();
 }
 
-// Global variables to keep track of the scores
-
-let computerScore = 0;
-let humanScore = 0;
-
 /*  playRound() takes the human and computer choices, selects the result of
-        the round, and logs a message in the console
-    
-    Pseudocode:
-    - Given the human and computer choices, compares them as follows:
-        - If human is rock and computer scissors, human is paper and computer rock,
-          or human scissors and computer paper, then human won
-        - If human is the same as computer, then nobody won
-        - Else, the computer won
-    - For each case, log a string in the console showing the round results
-*/
-
+        the round, and logs a message in the console */
 function playRound(humanChoice, computerChoice) {
     const case1 = humanChoice == 'rock' && computerChoice == 'scissors';
     const case2 = humanChoice == 'paper' && computerChoice == 'rock';
@@ -81,20 +72,7 @@ function playRound(humanChoice, computerChoice) {
 }
 
 /*  playGame() will play 5 rounds, keeping track of the scores so it can
-        determine the winner at the end of the game
-    
-    Pseudocode:
-    - Clear the console when the game starts
-    - Repeat the next steps 5 times:
-        - Get the human choice
-        - Get the computer choice
-        - Play a round with these choices
-    - Once the 5 rounds have been played, compare the scores:
-        - If user's score is bigger, they win
-        - If computer score is bigger, it wins
-        - If the scores are the same, its a draw and nobody won
-*/
-
+        determine the winner at the end of the game */
 function playGame() {
     console.clear();
 
