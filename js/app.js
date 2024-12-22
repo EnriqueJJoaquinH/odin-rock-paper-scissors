@@ -1,7 +1,7 @@
 // ? Global Variables to keep track of the scores
 let computerScore = 0;
 let humanScore = 0;
-let roundGame = 0;
+let roundCount = 0;
 
 // ? DOM Global Variables
 // Text headers
@@ -48,46 +48,53 @@ function getComputerChoice() {
 
 /*  getHumanChoice() asks the user to enter one of the valid options:
         "rock", "paper", or "scissors" */
-function getHumanChoice() {
-    let choice = prompt('Type your choice (rock, paper, or scissors): ');
+function getHumanChoice(event) {
+    switch (event.target.id) {
+        case 'rock':
+            humanChoiceImg.textContent = '🪨';
+            break;
+        case 'paper':
+            humanChoiceImg.textContent = '📄';
+            break;
+        case 'scissors':
+            humanChoiceImg.textContent = '✂️';
+            break;
+    }
 
-    console.log(`Your choice: ${choice}`)
-
-    return choice.toLowerCase();
+    return event.target.id;
 }
 
 /*  playRound() takes the human and computer choices, selects the result of
         the round, and logs a message in the console */
-function playRound(humanChoice, computerChoice) {
+function playRound(event) {
+    let humanChoice = getHumanChoice(event);
+    let computerChoice = getComputerChoice();
+
     const case1 = humanChoice == 'rock' && computerChoice == 'scissors';
     const case2 = humanChoice == 'paper' && computerChoice == 'rock';
     const case3 = humanChoice == 'scissors' && computerChoice == 'paper';
 
     if (case1 || case2 || case3){
-        console.log(`You won! ${humanChoice} beats ${computerChoice}`);
+        winnerTxt.textContent = `🥳 You win! 🥳`;
         ++humanScore;
     } else if (humanChoice == computerChoice){
-        console.log(`It's a draw! Both of you chose ${humanChoice}`);
+        winnerTxt.textContent = `😑 It's a draw! 😑`;
     } else {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        winnerTxt.textContent = `😭 You lose! 😭`;
         ++computerScore;
     }
+
+    roundTxt.textContent = `ROUND ${++roundCount}`
+    humanScoreTxt.textContent = `Your Score: ${humanScore}`;
+    computerScoreTxt.textContent = `PC's Score: ${computerScore}`;
 }
+
+btnPanel.addEventListener('click', playRound);
 
 /*  playGame() will play 5 rounds, keeping track of the scores so it can
         determine the winner at the end of the game */
 function playGame() {
     console.clear();
-
-    let humanSelection;
-    let computerSelection;
-
-    for(let i = 0; i < 5; i++){
-        humanSelection = getHumanChoice();
-        computerSelection = getComputerChoice();
-        
-        playRound(humanSelection, computerSelection);
-    }
 
     console.log(`Your score: ${humanScore}`);
     console.log(`Computer's score: ${computerScore}`);
