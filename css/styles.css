@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+    color: #232020;
+    font-family: "Roboto", serif;
+    margin: 0;
+}
+
+body {
+    background-color: #F4F4F4;
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+    margin: 40px auto 24px;
+    color: #FF7315;
+}
+
+h2 {
+    font-size: 40px;
+    color: #F4F4F4;
+}
+
+h3 {
+    display: inline-block;
+    font-size: 32px;
+    padding: 8px 24px;
+}
+
+.game-ui {
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
+
+.player-info {
+    background-color: #3A3535;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    gap: 40px;
+    align-items: center;
+    padding: 40px 0;
+    margin: 32px 0;
+    border-radius: 24px;
+}
+
+.choice {
+    height: 200px;
+    width: 200px;
+    background-color: #F4F4F4;
+    border: 8px solid #FF7315;
+    border-radius: 24px;
+    font-size: 130px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    width: 400px;
+}
+
+.buttons button {
+    flex: 1;
+}
+
+button, .button {
+    font-size: 20px;
+    padding: 8px 24px;
+    background-color: #FF7315;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #FAA916;
+}
+
+button:active {
+    background-color: #232020;
+    color: #FF7315;
+}
+
+#again {
+    visibility: hidden;
+}
+
+.show-result {
+    background-color: #232020;
+    border-radius: 8px;
+    color: #F4F4F4;
+}
+
+.show-button {
+    visibility: visible;
+}
