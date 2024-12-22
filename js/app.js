@@ -9,8 +9,8 @@ let winnerTxt = document.querySelector('h1');
 let roundTxt = document.querySelector('h3');
 // Player's information
 let humanScoreTxt = document.querySelector('#human-score');
-let computerScoreTxt = document.querySelector('#computer-score');
 let humanChoiceImg = document.querySelectorAll('.choice')[0];
+let computerScoreTxt = document.querySelector('#computer-score');
 let computerChoiceImg = document.querySelectorAll('.choice')[1];
 let computerChoiceTxt = document.querySelector('.button');
 // Buttons
@@ -46,8 +46,8 @@ function getComputerChoice() {
     return choice;
 }
 
-/*  getHumanChoice() handles an event trigger by finding out
-        which button was pressed, and returning a string */
+/*  getHumanChoice() handles an event trigger by finding out which button
+        was pressed, and returning a string related to that button*/
 function getHumanChoice(event) {
     switch (event.target.id) {
         case 'rock':
@@ -64,8 +64,9 @@ function getHumanChoice(event) {
     return event.target.id;
 }
 
-/*  playRound() takes the human and computer choices, selects the result of
-        the round, and logs a message in the console */
+/*  playRound() is an event handler triggered when the user clicks a button,
+        depending on the user and the computer choices, determines who won the
+        round, and if any has 5 points after that, finds out who won the game */
 function playRound(event) {
     let humanChoice = getHumanChoice(event);
     if (humanChoice == '') return;
@@ -93,7 +94,7 @@ function playRound(event) {
 }
 
 /*  findWinner() checks if a player has got 5 points, if so
-that player is the winner of the game */
+        that player is the winner of the game */
 function findWinner() {
     if (humanScore < 5 && computerScore < 5) {
         return;
@@ -116,6 +117,9 @@ function findWinner() {
     playAgainBtn.classList.remove('hidden');
 }
 
+/*  startAgain() is an event handler triggered when the user presses the
+        play again button. It resets everything to its original state so
+        a new game can be played */
 function startAgain() {
     humanScore = 0;
     computerScore = 0;
@@ -125,9 +129,9 @@ function startAgain() {
     winnerTxt.classList.remove('show-result');
     roundTxt.textContent = 'Press any button to start the game'
     humanScoreTxt.textContent = `Your Score: ${humanScore}`;
-    computerScoreTxt.textContent = `PC's Score: ${computerScore}`;
     humanChoiceImg.textContent = '';
     humanChoiceImg.classList.remove('disabled');
+    computerScoreTxt.textContent = `PC's Score: ${computerScore}`;
     computerChoiceImg.textContent = '';
     computerChoiceImg.classList.remove('disabled');
     computerChoiceTxt.textContent = 'PC\s choice';
@@ -140,5 +144,6 @@ function startAgain() {
     playAgainBtn.classList.add('hidden');
 }
 
+// ? Event Listeners
 btnPanel.addEventListener('click', playRound);
 playAgainBtn.addEventListener('click', startAgain);
