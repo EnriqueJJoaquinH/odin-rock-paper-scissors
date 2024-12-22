@@ -113,4 +113,26 @@ function findWinner() {
     playAgainBtn.classList.remove('hidden');
 }
 
+function startAgain() {
+    humanScore = 0;
+    computerScore = 0;
+    roundCount = 0;
+
+    roundTxt.textContent = 'ROCK PAPER SCISSORS';
+    winnerTxt.classList.remove('show-result');
+    winnerTxt.textContent = 'Press any button to start the game'
+    humanScoreTxt.textContent = `Your score: ${humanScore}`;
+    computerScoreTxt.textContent = `PC's Score: ${computerScore}`;
+    humanChoiceImg.textContent = '';
+    computerChoiceImg.textContent = '';
+    computerChoiceTxt.textContent = 'PC\s choice';
+
+    for (let btn of btnPanel.children) {
+        btn.classList.remove('disabled');
+    }
+
+    playAgainBtn.classList.add('hidden');
+}
+
 btnPanel.addEventListener('click', playRound);
+playAgainBtn.addEventListener('click', startAgain);

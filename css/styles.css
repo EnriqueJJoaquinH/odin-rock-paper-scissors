@@ -51,7 +51,7 @@ h3 {
     background-color: #F4F4F4;
     border: 8px solid #FF7315;
     border-radius: 24px;
-    font-size: 130px;
+    font-size: 125px;
 }
 
 .buttons {
@@ -76,6 +76,7 @@ button, .button {
 
 button:hover {
     background-color: #FAA916;
+    cursor: pointer;
 }
 
 button:active {
