@@ -29,16 +29,19 @@ function getComputerChoice() {
     switch (randNum){
         case 1:
             choice = "rock";
+            computerChoiceImg.textContent = '🪨';
             break;
         case 2:
             choice = "paper";
+            computerChoiceImg.textContent = '📄';
             break;
         case 3:
             choice = "scissors";
+            computerChoiceImg.textContent = '✂️';
             break;
     }
 
-    console.log(`Computer's choice: ${choice}`);
+    computerChoiceTxt.textContent = `PC's choice: ${choice.toUpperCase()}`;
 
     return choice;
 }
