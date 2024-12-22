@@ -46,8 +46,8 @@ function getComputerChoice() {
     return choice;
 }
 
-/*  getHumanChoice() asks the user to enter one of the valid options:
-        "rock", "paper", or "scissors" */
+/*  getHumanChoice() handles an event trigger by finding out
+        which button was pressed, and returning a string */
 function getHumanChoice(event) {
     switch (event.target.id) {
         case 'rock':
@@ -68,6 +68,7 @@ function getHumanChoice(event) {
         the round, and logs a message in the console */
 function playRound(event) {
     let humanChoice = getHumanChoice(event);
+    if (humanChoice == '') return;
     let computerChoice = getComputerChoice();
 
     const case1 = humanChoice == 'rock' && computerChoice == 'scissors';
@@ -75,34 +76,41 @@ function playRound(event) {
     const case3 = humanChoice == 'scissors' && computerChoice == 'paper';
 
     if (case1 || case2 || case3){
-        winnerTxt.textContent = `🥳 You win! 🥳`;
+        winnerTxt.textContent = `You win!`;
         ++humanScore;
     } else if (humanChoice == computerChoice){
-        winnerTxt.textContent = `😑 It's a draw! 😑`;
+        winnerTxt.textContent = `It's a draw!`;
     } else {
-        winnerTxt.textContent = `😭 You lose! 😭`;
+        winnerTxt.textContent = `You lose!`;
         ++computerScore;
     }
 
     roundTxt.textContent = `ROUND ${++roundCount}`
     humanScoreTxt.textContent = `Your Score: ${humanScore}`;
     computerScoreTxt.textContent = `PC's Score: ${computerScore}`;
+
+    findWinner();
+}
+
+/*  findWinner() checks if a player has got 5 points, if so
+that player is the winner of the game */
+function findWinner() {
+    if (humanScore < 5 && computerScore < 5) {
+        return;
+    }
+    
+    if (humanScore > computerScore){
+        winnerTxt.textContent = 'Congratulations! You won!';
+    } else {
+        winnerTxt.textContent = 'Oh! You lost!';
+    }
+    
+    for (let btn of btnPanel.children){
+        btn.classList.add('disabled');
+    }
+    
+    winnerTxt.classList.add('show-result');
+    playAgainBtn.classList.remove('hidden');
 }
 
 btnPanel.addEventListener('click', playRound);
-
-/*  playGame() will play 5 rounds, keeping track of the scores so it can
-        determine the winner at the end of the game */
-function playGame() {
-    console.clear();
-
-    console.log(`Your score: ${humanScore}`);
-    console.log(`Computer's score: ${computerScore}`);
-    if (humanScore > computerScore){
-        console.log('Congratulations! You won!');
-    } else if (computerScore > humanScore){
-        console.log('Oh! You lost!');
-    } else {
-        console.log('You both got the same score! It\'s a draw!');
-    }
-}

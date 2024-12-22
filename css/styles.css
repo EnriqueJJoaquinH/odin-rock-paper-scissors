@@ -83,7 +83,7 @@ button:active {
     color: #FF7315;
 }
 
-#again {
+.hidden {
     visibility: hidden;
 }
 
@@ -93,6 +93,7 @@ button:active {
     color: #F4F4F4;
 }
 
-.show-button {
-    visibility: visible;
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
 }
