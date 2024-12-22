@@ -2,6 +2,7 @@
     box-sizing: border-box;
     color: #232020;
     font-family: "Roboto", serif;
+    font-weight: 700;
     margin: 0;
 }
 
@@ -11,53 +12,59 @@ body {
 }
 
 h1 {
-    font-size: 48px;
-    margin: 40px auto 24px;
     color: #FF7315;
+    display: inline-block;
+    font-family: "Playwrite MX", serif;
+    font-optical-sizing: auto;
+    font-size: 48px;
+    font-weight: 400;
+    margin: 16px auto 24px;
+    padding: 8px 24px;
 }
 
 h2 {
-    font-size: 40px;
     color: #F4F4F4;
+    font-family: "Playwrite MX", serif;
+    font-optical-sizing: auto;
+    font-size: 40px;
+    font-weight: 400;
 }
 
 h3 {
-    display: inline-block;
     font-size: 32px;
-    padding: 8px 24px;
 }
 
 .game-ui {
     display: flex;
-    justify-content: center;
     gap: 5%;
+    justify-content: center;
 }
 
 .player-info {
     background-color: #3A3535;
+    border-radius: 24px;
+    margin: 24px 0;
+    padding: 40px 0;
+    width: 500px;
     display: flex;
     flex-direction: column;
-    width: 500px;
-    gap: 40px;
     align-items: center;
-    padding: 40px 0;
-    margin: 32px 0;
-    border-radius: 24px;
+    gap: 32px;
 }
 
 .choice {
-    height: 200px;
-    width: 200px;
     background-color: #F4F4F4;
     border: 8px solid #FF7315;
     border-radius: 24px;
     font-size: 125px;
+    height: 200px;
+    width: 200px;
 }
 
 .buttons {
     display: flex;
-    justify-content: space-between;
     gap: 16px;
+    justify-content: space-between;
     width: 400px;
 }
 
@@ -66,12 +73,11 @@ h3 {
 }
 
 button, .button {
-    font-size: 20px;
-    padding: 8px 24px;
     background-color: #FF7315;
     border: none;
     border-radius: 8px;
-    font-weight: bold;
+    font-size: 20px;
+    padding: 8px 24px;
 }
 
 button:hover {
@@ -90,8 +96,7 @@ button:active {
 
 .show-result {
     background-color: #232020;
-    border-radius: 8px;
-    color: #F4F4F4;
+    border-radius: 16px;
 }
 
 .disabled {

@@ -5,8 +5,8 @@ let roundCount = 0;
 
 // ? DOM Global Variables
 // Text headers
-let roundTxt = document.querySelector('h1');
-let winnerTxt = document.querySelector('h3');
+let winnerTxt = document.querySelector('h1');
+let roundTxt = document.querySelector('h3');
 // Player's information
 let humanScoreTxt = document.querySelector('#human-score');
 let computerScoreTxt = document.querySelector('#computer-score');
@@ -108,6 +108,9 @@ function findWinner() {
     for (let btn of btnPanel.children){
         btn.classList.add('disabled');
     }
+    humanChoiceImg.classList.add('disabled');
+    computerChoiceImg.classList.add('disabled');
+    computerChoiceTxt.classList.add('disabled');
     
     winnerTxt.classList.add('show-result');
     playAgainBtn.classList.remove('hidden');
@@ -118,14 +121,17 @@ function startAgain() {
     computerScore = 0;
     roundCount = 0;
 
-    roundTxt.textContent = 'ROCK PAPER SCISSORS';
+    winnerTxt.textContent = 'Rock Paper Scissors';
     winnerTxt.classList.remove('show-result');
-    winnerTxt.textContent = 'Press any button to start the game'
-    humanScoreTxt.textContent = `Your score: ${humanScore}`;
+    roundTxt.textContent = 'Press any button to start the game'
+    humanScoreTxt.textContent = `Your Score: ${humanScore}`;
     computerScoreTxt.textContent = `PC's Score: ${computerScore}`;
     humanChoiceImg.textContent = '';
+    humanChoiceImg.classList.remove('disabled');
     computerChoiceImg.textContent = '';
+    computerChoiceImg.classList.remove('disabled');
     computerChoiceTxt.textContent = 'PC\s choice';
+    computerChoiceTxt.classList.remove('disabled');
 
     for (let btn of btnPanel.children) {
         btn.classList.remove('disabled');
